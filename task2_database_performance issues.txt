@@ -1,1 +1,24 @@
+For this task I have specified the following steps:
 
+    1. The first step to start the investigation is to analyse the table structure, here we can include indexes, data types, the relations between other
+       tables as in our situation we have seller-table which is linked to our Station table.
+
+    2. My first recommendation is to use an execution plan to analyse the queries that manipulate the Station table and its columns. 
+       This will enable us to pinpoint any slow performance issues, such as index scans or full table scans. Based on this analysis, 
+       we can add or modify indexes on the columns that are frequently used in Update operations, to improve their efficiency.
+
+    3. Considering that the Station table will grow in size because of the expanding the amount of data, we can use partitioning. 
+       It will help us to distribuite the data across multiple storage locations, which can improve the performance of the query for large table size. 
+       We can implement caching was well. 
+       Partitioning and caching are deprecated if we are using newest versions of MySQL ( This technology was mentioned in our first interview, that’s why
+       I gave it like an example). In this case in MySQL for partitioning is using the engine tool called Native Partitioning and for caching is using 
+       caching in the application layer.
+
+    4. Writing SELECT queries, it is important to only select the necessary columns instead of using SELECT * (select all) to retrieve all columns,
+       including unnecessary ones. Additionally, we could try to avoid retrieving large amounts of data unnecessarily, especially for queries that are  
+       executed frequently. By doing so, we can significantly improve the performance of the queries which are manipulation with Station table.
+
+    5. Improving the performance of UPDATES operations on the Station table, I consider utilising batch updates or stored procedures. However, we must be 
+       careful about using triggers or other database objects that may add extra overhead. 
+
+In conclusion I think that it is crucial to have a thorough understanding of the database workload and system architecture to determine the most effective solutions to implement.
