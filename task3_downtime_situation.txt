@@ -1,1 +1,19 @@
 
+In my opinion we can proceed with the following steps:
+
+   1. On the first step we should analyze the existing database workload and system architecture to determine the impact of the operation. 
+      Here we can give an example that if the database is already under heavy load or the table is frequently accessed, adding an index could cause 
+      significant downtime and also could create a deadlock.
+
+   2. To predict in advance such situation we could create similar database table and simulate the same operation but only in Test or Dev environment. 
+      It will help us make several operations and to identify potential performance issue which we are facing and to make necessary optimisations. 
+      After all the tests are complete with succes, then we can proceed with the new change implementation in the production environment.
+
+   3. If we are still using MySQL database technology then to avoid downtime situation when adding an index to a large database table , we ca use online-
+      schema-change tool. This is a tool from the MySQL Utilities package that allows you to make online schema changes to MySQL tables, including adding 
+      and dropping indexes. Algorithm is creating a new table with the desired changes and then swapping it with the original table avoiding any locks or 
+      deadlock to tables.
+
+   4. And ideea is that we can schedule index operations during periods of low database activity, such as during off-peak hours or system maintaince, to
+      minimize the impact on the system. It could be scheduled in a tool called MySQL Event Scheduler or if our database is installed on a UNIX server 
+      systems then we can develop a shell scripts which runs on scheduled time using CRONTAB and do necessary index operations.
