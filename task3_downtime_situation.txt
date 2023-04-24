@@ -14,6 +14,9 @@ In my opinion we can proceed with the following steps:
       and dropping indexes. Algorithm is creating a new table with the desired changes and then swapping it with the original table avoiding any locks or 
       deadlock to tables.
 
-   4. And ideea is that we can schedule index operations during periods of low database activity, such as during off-peak hours or system maintaince, to
+   4. An ideea is that we can schedule index operations during periods of low database activity, such as during off-peak hours or system maintaince, to
       minimize the impact on the system. It could be scheduled in a tool called MySQL Event Scheduler or if our database is installed on a UNIX server 
       systems then we can develop a shell scripts which runs on scheduled time using CRONTAB and do necessary index operations.
+      
+      
+      
